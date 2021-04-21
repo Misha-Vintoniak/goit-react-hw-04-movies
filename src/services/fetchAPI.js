@@ -1,7 +1,40 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 // https://api.themoviedb.org/3/movie/550?api_key=8d0b0cb8d92c96253c161619a6311da5
 
+const BASE_URL = 'https://api.themoviedb.org/3/';
+const api_key = '8d0b0cb8d92c96253c161619a6311da5';
+
+const fetchRequest = async (path, config = '') => {
+  const response = await fetch(
+    `${BASE_URL}${path}?api_key=${api_key}${config}`,
+  );
+  return response.ok
+    ? await response.json()
+    : Promise.reject(new Error('Not found'));
+};
+
+const getTrending = () => {
+  return fetchRequest('trending/movie/week');
+};
+
+const searchMovies = (searchQuery, page) => {
+  return fetchRequest(`search/movie&query=${searchQuery}&page=${page}`);
+};
+
+const getMovieDetails = id => {
+  return fetchRequest(`movie/${id}`);
+};
+
+const getMovieCredits = id => {
+  return fetchRequest(`movie/${id}/credits`);
+};
+
+const getMovieReviews = id => {
+  return fetchRequest(`movie/${id}/reviews`);
+};
+
+/*
 const Axios = axios.create({
   BASE_URL: 'https://api.themoviedb.org/3/',
   params: {
@@ -9,37 +42,28 @@ const Axios = axios.create({
   },
 });
 
-async function getTrending(page) {
-  const response = await Axios.get(`trending/movie/week?page=${page}`);
-  const { data } = response;
-  console.log(data);
-  return data;
-}
-
 async function searchMovies(searchQuery, page) {
-  const response = await Axios.get(
-    `search/movie?query=${searchQuery}page=${page}`,
-  );
+  await Axios.get(`search/movie?query=${searchQuery}page=${page}`);
   const { data } = response;
   return data;
 }
 
 async function getMovieDetails(id) {
-  const response = await Axios.get(`movie/${id}`);
+  await Axios.get(`movie/${id}`);
   const { data } = response;
   return data;
 }
 async function getMovieCredits(id) {
-  const response = await Axios.get(`movie/${id}/credits`);
+  await Axios.get(`movie/${id}/credits`);
   const { data } = response;
   return data;
 }
 async function getMovieReviews(id) {
-  const response = await Axios.get(`movie/${id}/reviews`);
+  await Axios.get(`movie/${id}/reviews`);
   const { data } = response;
   return data;
 }
-
+*/
 const API = {
   getTrending,
   searchMovies,

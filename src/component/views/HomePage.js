@@ -1,26 +1,26 @@
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
 // import { NavLink } from 'react-router-dom';
-// import API from '../../services/fetchAPI';
+import API from '../../services/fetchAPI';
+import TrendingPage from '../TrendingPage/TrendingPage';
 
 export default function HomePage() {
-  // const [movie, setMovie] = useState(null);
-  // const [page, setPage] = useState(1);
-  // const [totalPage, setTotalPage] = useState(0);
+  const [page, setPage] = useState(1);
+  const [movies, setMovies] = useState(null);
 
-  // useEffect(() => {
-  //   const getDate = async () => {
-  //     try {
-  //       const { totalPage } = await API.getTrending(page);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getDate();
-  // }, [page]);
+  useEffect(() => {
+    // if (setMovies === {}) {
+    //   return;
+    // }
+    console.log('homepage');
+    API.getTrending().then(data => setMovies(data.results));
+  }, [page]);
+
   return (
     <>
       <nav>
         <h2>Trending today</h2>
+        {movies && <TrendingPage movies={movies} />}
       </nav>
     </>
   );

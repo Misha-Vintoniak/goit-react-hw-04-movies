@@ -1,33 +1,33 @@
-// import { useState, useEffect } from 'react';
-import Cast from './Cast';
-import Reviews from './Reviews';
-// import API from '../../services/fetchAPI';
+import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import MoviesItem from '../MoviesItem/MoviesItem';
+
+// import Cast from './Cast';
+// import Reviews from './Reviews';
+import API from '../../services/fetchAPI';
 
 export default function MoviesPage() {
+  // const [movies, setMovies] = useState(null);
+  const [id, setId] = useState(null);
+  useEffect(() => {
+    console.log('movies page');
+    if (id === null) {
+      return;
+    }
+    API.getMovieDetails().then(console.log());
+  }, [id]);
   return (
     <>
-      <button type="button">Go back</button>
-      <div>
-        <img src="" alt="" />
-        <ul>
-          <li>
-            <p>name</p>
-            <span>about</span>
-          </li>
-          <li>
-            <p>Overview</p>
-            <p>about</p>
-          </li>
-          <li>
-            <p>Cenres</p>
-            <span>about</span>
-          </li>
-        </ul>
-      </div>
-      <hr />
+      <p>Movies</p>
+      <MoviesItem />
       <section>
-        <Cast />
-        <Reviews />
+        <NavLink exact to="/">
+          {/* <Cast /> */}
+        </NavLink>
+
+        <NavLink exact to="/movies">
+          {/* <Reviews /> */}
+        </NavLink>
       </section>
       <hr />
     </>
