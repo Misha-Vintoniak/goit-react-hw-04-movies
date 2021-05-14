@@ -12,7 +12,7 @@ export default function HomePage() {
     // if (setMovies === {}) {
     //   return;
     // }
-    console.log('homepage');
+    console.log('Home page');
     API.getTrending().then(data => setMovies(data.results));
   }, [page]);
 

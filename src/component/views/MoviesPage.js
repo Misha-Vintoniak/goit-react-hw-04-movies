@@ -10,7 +10,7 @@ export default function MoviesPage() {
   // const [movies, setMovies] = useState(null);
   const [id, setId] = useState(null);
   useEffect(() => {
-    console.log('movies page');
+    console.log('Movies page');
     if (id === null) {
       return;
     }

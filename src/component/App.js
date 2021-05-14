@@ -1,7 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
-import { lazy, Suspense, useState, useEffect } from 'react';
+import { lazy, Suspense /*useState, useEffect*/ } from 'react';
 
-import API from '../services/fetchAPI';
+// import API from '../services/fetchAPI';
 // import MovieDetailsPage from './MovieDetailsPage/MovieDetailsPage';
 // import MoviesPage from './MoviesPage/MoviesPage';
 
@@ -20,7 +20,7 @@ const NotFound = lazy(() =>
 );
 
 export default function App() {
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   // const [movies, setMovies] = useState([]);
 
   /*const API = {
