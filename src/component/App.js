@@ -1,23 +1,10 @@
-import { Switch, Route } from 'react-router-dom';
-import { lazy, Suspense /*useState, useEffect*/ } from 'react';
+import { Suspense } from 'react';
+import Routers from './routers';
+import Navigation from './Navigation';
 
 // import API from '../services/fetchAPI';
 // import MovieDetailsPage from './MovieDetailsPage/MovieDetailsPage';
 // import MoviesPage from './MoviesPage/MoviesPage';
-
-const HomePage = lazy(() =>
-  import('./views/HomePage' /*webpackChunkName : Homepage*/),
-);
-const MoviesPage = lazy(() =>
-  import('./views/MoviesPage' /*webpackChunkName : MoviesPage*/),
-);
-
-const Navigation = lazy(() =>
-  import('./Navigation/Navigation' /*webpackChunkName : Navigation*/),
-);
-const NotFound = lazy(() =>
-  import('./views/NotFound' /*/*webpackChunkName : NotFound*/),
-);
 
 export default function App() {
   // const [page, setPage] = useState(1);
@@ -58,15 +45,7 @@ export default function App() {
     <>
       <Suspense fallback={<p>Загружаємо ... </p>}>
         <Navigation />
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route exact path="/movies">
-            <MoviesPage />
-          </Route>
-          <NotFound />
-        </Switch>
+        <Routers />
       </Suspense>
     </>
   );

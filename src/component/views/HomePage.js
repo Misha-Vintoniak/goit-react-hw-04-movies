@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-
 // import { NavLink } from 'react-router-dom';
 import API from '../../services/fetchAPI';
 import TrendingPage from '../TrendingPage/TrendingPage';
 
-export default function HomePage() {
+const HomePage = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState(null);
 
@@ -13,7 +12,10 @@ export default function HomePage() {
     //   return;
     // }
     console.log('Home page');
-    API.getTrending().then(data => setMovies(data.results));
+    API.getTrending().then(data => {
+      setMovies(data.results);
+      console.log(data.results);
+    });
   }, [page]);
 
   return (
@@ -24,4 +26,6 @@ export default function HomePage() {
       </nav>
     </>
   );
-}
+};
+
+export default HomePage;

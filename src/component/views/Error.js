@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-export default function NotFound() {
+export default function Error() {
   const handleCkickHome = () => {
     <NavLink to="/"></NavLink>;
   };
